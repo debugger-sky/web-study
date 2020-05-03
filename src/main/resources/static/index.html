@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+        function getBean(scopeType) {
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:8080/get' + scopeType + 'Bean',
+                dataType : 'json',
+                success: function(data){
+                    console.log(data);
+                    $('#name').val(data.name);
+                    $('#age').val(data.age);
+                    $('#sex').val(data.sex);
+                },
+                error: function(xhr, status, error) {
+                    alert(error);
+                }
+            });
+        };
+
+        function setBean(scopeType) {
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8080/set' + scopeType + 'Bean',
+                contentType: 'application/json',
+                data : JSON.stringify(
+                    {name : $('#name').val(),
+                        age  : $('#age').val(),
+                        sex  : $('#sex').val(),}
+                ),
+                success: function(data){
+                    console.log('success');
+                },
+                error: function(xhr, status, error) {
+                    alert(error);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $('#getSingletonBeanTest').click(function () {
+                getBean('Singleton');
+            });
+
+            $('#setSingletonBeanTest').click(function () {
+                setBean('Singleton');
+            });
+
+            $('#getSessionBeanTest').click(function () {
+                getBean('Session');
+            });
+
+            $('#setSessionBeanTest').click(function () {
+                setBean('Session');
+            });
+        })
+    </script>
+    <style>
+        .one {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Bean scope test!!</h3>
+
+    <div class="one">
+        <button id="getSingletonBeanTest">get Singleton BeanTest</button>
+        <button id="setSingletonBeanTest">set Singleton BeanTest</button>
+    </div>
+        <button id="getSessionBeanTest">get Session BeanTest</button>
+        <button id="setSessionBeanTest">set Session BeanTest</button>
+    <div class="one">
+
+    </div>
+
+    <div class="one">
+        <div>이름 <input type="text" id="name"></div>
+        <div>나이 <input type="text" id="age"></div>
+        <div>성별 <input type="text" id="sex"></div>
+    </div>
+</body>
+</html>
