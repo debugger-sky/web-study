@@ -1,6 +1,6 @@
 package com.study.study.domain.beantest.controller;
 
-import com.study.study.common.service.BeanConverterService;
+import com.study.study.domain.beantest.service.BeanConverterService;
 import com.study.study.domain.beantest.model.BeanDto;
 import com.study.study.domain.beantest.model.SessionBean;
 import org.springframework.web.bind.annotation.GetMapping;

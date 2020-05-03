@@ -1,4 +1,4 @@
-package com.study.study.common.service;
+package com.study.study.domain.beantest.service;
 
 import com.study.study.domain.beantest.model.BeanDto;
 import com.study.study.domain.beantest.model.ScopeBean;
