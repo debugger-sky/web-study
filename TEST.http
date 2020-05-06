@@ -29,3 +29,6 @@ GET http://localhost:8080/getTryCatchTest?num1=1&num2=29&num3=여&num4=90&num5=1
 
 ### throws exception Test
 GET http://localhost:8080/getThrowsException?num1=1&num2=29&num3=여&num4=90&num5=10
+
+### native query test
+GET http://localhost:8080/deleteFreeboard
