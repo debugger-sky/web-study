@@ -1,0 +1,31 @@
+### singleton get test
+GET http://localhost:8080/getSingletonBean
+
+### singleton set test
+POST http://localhost:8080/setSingletonBean
+Content-Type: application/json
+
+{
+  "name" : "SKY",
+  "age"  : 28,
+  "sex"  : "여"
+}
+
+### session get test
+GET http://localhost:8080/getSessionBean
+
+### session set test
+POST http://localhost:8080/setSessionBean
+Content-Type: application/json
+
+{
+  "name" : "SKY",
+  "age"  : 29,
+  "sex"  : "여"
+}
+
+### try catch Test
+GET http://localhost:8080/getTryCatchTest?num1=1&num2=29&num3=여&num4=90&num5=10
+
+### throws exception Test
+GET http://localhost:8080/getThrowsException?num1=1&num2=29&num3=여&num4=90&num5=10
