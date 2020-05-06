@@ -1,18 +1,18 @@
-package com.study.study.domain.beantest.controller;
+package com.study.study.domain.bean.controller;
 
-import com.study.study.domain.beantest.service.BeanConverterService;
-import com.study.study.domain.beantest.model.BeanDto;
-import com.study.study.domain.beantest.model.SingletonBean;
+import com.study.study.domain.bean.service.BeanConverterService;
+import com.study.study.domain.bean.model.BeanDto;
+import com.study.study.domain.bean.model.SingletonBean;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class SingletonBeanTestController {
+public class SingletonBeanController {
 
     private final BeanConverterService beanConverterService;
     private final SingletonBean testBean;
 
-    public SingletonBeanTestController(SingletonBean testBean,
-                                       BeanConverterService beanConverterService) {
+    public SingletonBeanController(SingletonBean testBean,
+                                   BeanConverterService beanConverterService) {
         this.testBean = testBean;
         this.beanConverterService = beanConverterService;
     }

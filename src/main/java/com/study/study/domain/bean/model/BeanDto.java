@@ -1,4 +1,4 @@
-package com.study.study.domain.beantest.model;
+package com.study.study.domain.bean.model;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,7 +1,7 @@
-package com.study.study.domain.beantest.service;
+package com.study.study.domain.bean.service;
 
-import com.study.study.domain.beantest.model.BeanDto;
-import com.study.study.domain.beantest.model.ScopeBean;
+import com.study.study.domain.bean.model.BeanDto;
+import com.study.study.domain.bean.model.ScopeBean;
 import org.springframework.stereotype.Component;
 
 @Component

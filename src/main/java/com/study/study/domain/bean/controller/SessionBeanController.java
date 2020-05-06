@@ -1,21 +1,21 @@
-package com.study.study.domain.beantest.controller;
+package com.study.study.domain.bean.controller;
 
-import com.study.study.domain.beantest.service.BeanConverterService;
-import com.study.study.domain.beantest.model.BeanDto;
-import com.study.study.domain.beantest.model.SessionBean;
+import com.study.study.domain.bean.service.BeanConverterService;
+import com.study.study.domain.bean.model.BeanDto;
+import com.study.study.domain.bean.model.SessionBean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class SessionBeanTestController {
+public class SessionBeanController {
 
     private final BeanConverterService beanConverterService;
     private final SessionBean testBean;
 
-    public SessionBeanTestController(SessionBean testBean,
-                                     BeanConverterService beanConverterService) {
+    public SessionBeanController(SessionBean testBean,
+                                 BeanConverterService beanConverterService) {
         this.testBean = testBean;
         this.beanConverterService = beanConverterService;
     }
