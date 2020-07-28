@@ -1,8 +1,19 @@
-<h3>Session Storage test!!</h3>
+<h3>[Session Storage 테스트]</h3>
 
 <div class="one">
     <div>서버 session user_name : <input type="text" id="server_session_user_name" disabled></div>
     <div>클라이언트 session user_name : <input type="text" id="client_session_user_name" disabled></div>
+</div>
+
+<div class="point">
+    <h3>[결론]</h3>
+    <div>
+        브라우저의 개발자 도구에서 확인 가능한 session storage는 웹에서 흔히 얘기하는 session의 정보들을 나타내는 곳이 아니다.<br>
+        session의 정보는 서버에 저장되며, 이는 클라이언트에서 확인할 수 있는 정보가 아니다.<br>
+        <br>
+        session storage는 cookie처럼 클라이언트에 저장되며, 데이터의 유지 기간은 session의 유지 기간과 동일하게 브라우저가 닫히기 전까지 이다.<br>
+        session storage에 데이터를 저장할 때는 javascript로 sessionStorage.setItem() , 가져올 때는 sessionStorage.getItem() 을 이용한다.
+    </div>
 </div>
 
 <script>

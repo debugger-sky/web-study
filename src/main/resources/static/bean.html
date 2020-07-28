@@ -1,4 +1,4 @@
-<h3>Bean scope test!!</h3>
+<h3>[Bean scope 테스트]</h3>
 
 <div class="one">
     <button id="getSingletonBeanTest">get Singleton BeanTest</button>
@@ -6,9 +6,6 @@
 </div>
 <button id="getSessionBeanTest">get Session BeanTest</button>
 <button id="setSessionBeanTest">set Session BeanTest</button>
-<div class="one">
-
-</div>
 
 <div class="one">
     <div>이름 <input type="text" id="name"></div>
@@ -16,11 +13,23 @@
     <div>성별 <input type="text" id="sex"></div>
 </div>
 
+<div class="point">
+    <h3>[결론]</h3>
+    <div>
+        싱글톤 패턴은 한 프로그램 내에서 하나의 인스턴스만 생성하는 패던이다.<br>
+        스프링은 싱글톤을 기본으로 사용하고 있다.<br>
+        스프링에서 private final TestService testService 식으로 선언하여 생성자 또는 @Autowired 로 주입받는 객체들은 모두 같은 인스턴스들이다.<br>
+        어느 controller에서 testService를 주입받던 같은 인스턴스라는 의미이다.<br>
+
+        만약 싱글톤 객체 내에서 변경되는 값이 있다면, 변경되는 값은 프로그램에 접근하는 모든 사람에게 동일하게 변경되어 보여진다.<br>
+    </div>
+</div>
+
 <script>
     function getBean(scopeType) {
         $.ajax({
             type: 'GET',
-            url: 'http://localhost:8080/get' + scopeType + 'Bean',
+            url: 'http://localhost:8888/get' + scopeType + 'Bean',
             dataType : 'json',
             success: function(data){
                 console.log(data);
@@ -37,7 +46,7 @@
     function setBean(scopeType) {
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:8080/set' + scopeType + 'Bean',
+            url: 'http://localhost:8888/set' + scopeType + 'Bean',
             contentType: 'application/json',
             data : JSON.stringify(
                 {name : $('#name').val(),
