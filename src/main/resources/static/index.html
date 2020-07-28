@@ -2,88 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Main Index</title>
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+
     <script>
-        function getBean(scopeType) {
-            $.ajax({
-                type: 'GET',
-                url: 'http://localhost:8080/get' + scopeType + 'Bean',
-                dataType : 'json',
-                success: function(data){
-                    console.log(data);
-                    $('#name').val(data.name);
-                    $('#age').val(data.age);
-                    $('#sex').val(data.sex);
-                },
-                error: function(xhr, status, error) {
-                    alert(error);
-                }
-            });
-        };
+        const titleMap = new Map();
+        titleMap.set('bean', 'bean test');
+        titleMap.set('sessionstorage', 'session storage test');
 
-        function setBean(scopeType) {
-            $.ajax({
-                type: 'POST',
-                url: 'http://localhost:8080/set' + scopeType + 'Bean',
-                contentType: 'application/json',
-                data : JSON.stringify(
-                    {name : $('#name').val(),
-                        age  : $('#age').val(),
-                        sex  : $('#sex').val(),}
-                ),
-                success: function(data){
-                    console.log('success');
-                },
-                error: function(xhr, status, error) {
-                    alert(error);
-                }
-            });
+        function clickMenu(object) {
+            $('#menu ul li span').removeClass('active');
+            $(object).addClass('active');
         }
 
-        $(document).ready(function () {
-            $('#getSingletonBeanTest').click(function () {
-                getBean('Singleton');
-            });
-
-            $('#setSingletonBeanTest').click(function () {
-                setBean('Singleton');
-            });
-
-            $('#getSessionBeanTest').click(function () {
-                getBean('Session');
-            });
-
-            $('#setSessionBeanTest').click(function () {
-                setBean('Session');
-            });
-        })
+        function loadPage(page) {
+            $('title').text(titleMap.get(page));
+            $("#body").load("./"+page+".html");
+        }
     </script>
     <style>
+        #menu {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        #menu ul li {
+            cursor: pointer;
+        }
+        #menu ul li span:hover {
+            color: purple;
+        }
         .one {
             margin-top: 20px;
             margin-bottom: 20px;
         }
+        .active {
+            font-weight: bold;
+            cursor: default;
+            color: black;
+        }
     </style>
 </head>
 <body>
-    <h3>Bean scope test!!</h3>
-
-    <div class="one">
-        <button id="getSingletonBeanTest">get Singleton BeanTest</button>
-        <button id="setSingletonBeanTest">set Singleton BeanTest</button>
-    </div>
-        <button id="getSessionBeanTest">get Session BeanTest</button>
-        <button id="setSessionBeanTest">set Session BeanTest</button>
-    <div class="one">
-
+    <div id="menu">
+        <ul>
+            <li><span onclick="clickMenu(this); loadPage('bean');">bean test</span></li>
+            <li><span onclick="clickMenu(this); loadPage('sessionstorage');">session storage test</span></li>
+            <li><span onclick="clickMenu(this); loadPage('cookie');">cookie test</span></li>
+        </ul>
     </div>
 
-    <div class="one">
-        <div>이름 <input type="text" id="name"></div>
-        <div>나이 <input type="text" id="age"></div>
-        <div>성별 <input type="text" id="sex"></div>
-    </div>
+    <div id="body"></div>
+
 </body>
 </html>
