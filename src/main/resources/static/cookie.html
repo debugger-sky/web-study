@@ -1,0 +1,19 @@
+<h3>Cookie test!!</h3>
+
+<div class="one">
+</div>
+
+<script>
+    $.cookie('user_name', "HelloSky!");
+
+    $.ajax({
+        type: 'GET',
+        url: 'http://localhost:8888/cookieInfo',
+        dataType : 'text',
+        success: function(data){
+        },
+        error: function(xhr, status, error) {
+            alert(error);
+        }
+    })
+</script>

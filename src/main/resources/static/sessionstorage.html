@@ -1,0 +1,38 @@
+<h3>Session Storage test!!</h3>
+
+<div class="one">
+    <div>서버 session user_name : <input type="text" id="server_session_user_name" disabled></div>
+    <div>클라이언트 session user_name : <input type="text" id="client_session_user_name" disabled></div>
+</div>
+
+<script>
+    function getServerSession() {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8888/userInfo',
+            dataType : 'text',
+            success: function(data){
+                $("#server_session_user_name").val(data);
+
+            },
+            error: function(xhr, status, error) {
+                alert(error);
+            }
+        })
+    }
+
+    sessionStorage.setItem("user_name", "I'm not sky");
+
+    $.ajax({
+        type: 'GET',
+        url: 'http://localhost:8888/sessionInfo',
+        dataType : 'text',
+        success: function(data){
+            getServerSession();
+            $('#client_session_user_name').val(sessionStorage.getItem("user_name")); // getClientSession
+        },
+        error: function(xhr, status, error) {
+            alert(error);
+        }
+    });
+</script>
