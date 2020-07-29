@@ -19,3 +19,6 @@ spring:
           lob:
             non_contextual_creation: true
     show-sql: true
+  http:
+    multipart:
+      location: "C:\\SKY\\tmp"

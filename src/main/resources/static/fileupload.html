@@ -1,0 +1,46 @@
+<h3>[파일 업로드 테스트]</h3>
+
+<div class="one">
+    <form id="form">
+        <div>
+            <label for="title">파일 이름 </label>
+            <input type="text" id="title" name="title" placeholder="파일 이름을 적어주세요"/>
+        </div>
+        <div>
+            <label for="file">첨부파일 </label>
+            <input type="file" id="file" name="file" value="파일 선택" multiple="multiple"/>
+        </div>
+    </form>
+    <button type="button" id="submit-btn">submit</button>
+</div>
+
+<div class="point">
+    <h3>[결론]</h3>
+</div>
+
+<script>
+    $('#submit-btn').click(function() {
+        let formData = new FormData();
+        let inputFile = $("in" +
+            "put[name='file']");
+        let files = inputFile[0].files;
+
+        console.log(files);
+
+        //add filedate to formdata
+        for (let i = 0; i < files.length; i++) {
+            formData.append("multipartFiles", files[i]);
+        }
+
+        $.ajax({
+            url: '/uploadAjaxAction',
+            processData: false,
+            contentType: false,
+            data: formData,
+            type: 'POST',
+            success: function (result) {
+                alert("Uploaded");
+            }
+        });
+    })
+</script>
